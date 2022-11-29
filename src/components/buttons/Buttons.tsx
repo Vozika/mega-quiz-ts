@@ -1,8 +1,7 @@
-import React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { switchLessAnswers } from "../../features/options/optionsSlice";
 import { RootStore, useAppDispatch } from "../../store";
 
@@ -12,7 +11,7 @@ interface Props {
 
 const Buttons = ({ backToStart }: Props) => {
   const dispatch = useAppDispatch();
-  const { show5050, interfaceText, lessAnswers } = useSelector(
+  const { show5050, interfaceText } = useSelector(
     (store: RootStore) => store.options
   );
 

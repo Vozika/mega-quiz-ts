@@ -10,6 +10,7 @@
 
 # production
 /build
+/public/flag
 
 # misc
 .DS_Store

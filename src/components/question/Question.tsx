@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
+import Flag from "../flag/Flag";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Fade from "@mui/material/Fade";
+import { Stack } from "@mui/material";
 
 import { RootStore } from "../../store";
 
@@ -9,7 +11,7 @@ const Question = () => {
   const { question } = useSelector((store: RootStore) => store.engine);
   const { currentQuestion } = useSelector((store: RootStore) => store.score);
   const { showFade } = useSelector((store: RootStore) => store.utilities);
-  const { numberOfQuestions, interfaceText } = useSelector(
+  const { numberOfQuestions, interfaceText, flip } = useSelector(
     (store: RootStore) => store.options
   );
 
@@ -53,7 +55,10 @@ const Question = () => {
           exit: 450,
         }}
       >
-        <Typography sx={question_object}>{question.object}</Typography>
+        <Stack>
+          {!flip && <Flag />}
+          <Typography sx={question_object}>{question.object}</Typography>
+        </Stack>
       </Fade>
     </div>
   );

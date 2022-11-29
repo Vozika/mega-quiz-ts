@@ -63,6 +63,14 @@ const theme = createTheme({
   components: {
     // Name of the component
     MuiButton: {
+      variants: [
+        {
+          props: { variant: "outlined" },
+          style: {
+            backgroundColor: "white",
+          },
+        },
+      ],
       defaultProps: {
         // The default props to change
         sx: {
@@ -392,6 +400,13 @@ function App() {
     quiz();
   }
 
+  function preloadImage(): void {
+    if (usedData.length !== 0) {
+      const img = new Image();
+      img.src = "flag/" + usedData[usedData.length - 1].id + ".svg";
+    }
+  }
+
   useEffect(() => {
     clearAndRefresh();
   }, [numberOfQuestions.current]);
@@ -449,6 +464,10 @@ function App() {
     refreshUsedData();
   }, [usedData]);
 
+  useEffect(() => {
+    preloadImage();
+  }, [usedData]);
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -463,7 +482,11 @@ function App() {
           }}
         >
           {start && (
-            <Start startQuiz={startQuiz} toLocalStorage={toLocalStorage} />
+            <Start
+              startQuiz={startQuiz}
+              toLocalStorage={toLocalStorage}
+              preloadImage={preloadImage}
+            />
           )}
           {main && (
             <Stack>

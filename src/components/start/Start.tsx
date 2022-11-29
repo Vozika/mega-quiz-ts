@@ -27,9 +27,10 @@ import Statistics from "../statistics/Statistics";
 interface Props {
   startQuiz: () => void;
   toLocalStorage: () => void;
+  preloadImage: () => void;
 }
 
-const Start = ({ startQuiz, toLocalStorage }: Props) => {
+const Start = ({ startQuiz, toLocalStorage, preloadImage }: Props) => {
   const dispatch = useAppDispatch();
 
   const { interfaceText, options } = useSelector(
@@ -39,6 +40,8 @@ const Start = ({ startQuiz, toLocalStorage }: Props) => {
   const { statistics, showFade } = useSelector(
     (store: RootStore) => store.utilities
   );
+
+  preloadImage();
 
   return (
     <Stack>
