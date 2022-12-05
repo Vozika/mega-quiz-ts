@@ -22,6 +22,7 @@ interface Options {
   statistics: boolean;
   options: boolean;
   region: boolean;
+  flags: boolean;
 }
 
 const initialState: Options = {
@@ -43,6 +44,7 @@ const initialState: Options = {
   statistics: false,
   options: false,
   region: false,
+  flags: false,
 };
 
 const optionsSlice = createSlice({
@@ -103,6 +105,12 @@ const optionsSlice = createSlice({
     switchRegion: (state) => {
       state.region = !state.region;
     },
+    switchFlags: (state) => {
+      state.flags = !state.flags;
+    },
+    setRegion: (state, action: PayloadAction<boolean>) => {
+      state.region = action.payload;
+    },
   },
 });
 
@@ -125,6 +133,8 @@ export const {
   setOptions,
   setTranslations,
   switchRegion,
+  switchFlags,
+  setRegion,
 } = optionsSlice.actions;
 
 export default optionsSlice.reducer;

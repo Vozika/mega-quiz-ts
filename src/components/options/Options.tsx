@@ -20,6 +20,9 @@ import {
   setOptions,
   switchRegion,
   switchIronMan,
+  switchFlags,
+  setHideLetters,
+  setRegion,
 } from "../../features/options/optionsSlice";
 
 import {
@@ -59,6 +62,7 @@ const Options = ({ startQuiz }: Props) => {
     flip,
     region,
     ironMan,
+    flags,
   } = useSelector((store: RootStore) => store.options);
 
   const { showFade } = useSelector((store: RootStore) => store.utilities);
@@ -197,6 +201,7 @@ const Options = ({ startQuiz }: Props) => {
           disableTypography
           control={<Checkbox />}
           label={interfaceText.REGION}
+          disabled={flags ? true : false}
           checked={region ? true : false}
           onChange={() => {
             dispatch(switchRegion());
@@ -212,9 +217,26 @@ const Options = ({ startQuiz }: Props) => {
           control={<Checkbox />}
           label={interfaceText.HIDE_LETTERS}
           checked={hideLetters ? true : false}
+          disabled={flags ? true : false}
           onChange={() => dispatch(switchHideLetters())}
         />
         <Typography>{interfaceText.HIDE_LETTERS_DESC}</Typography>
+
+        <Divider />
+
+        <FormControlLabel
+          sx={options_title}
+          disableTypography
+          control={<Checkbox />}
+          label={interfaceText.FLAGS}
+          checked={flags ? true : false}
+          onChange={() => {
+            dispatch(switchFlags());
+            dispatch(setRegion(false));
+            dispatch(setHideLetters(false));
+          }}
+        />
+        <Typography>{interfaceText.FLAGS_DESC}</Typography>
 
         <Divider />
 

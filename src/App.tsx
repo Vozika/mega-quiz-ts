@@ -15,6 +15,7 @@ import Answers from "./components/answers/Answers";
 import Counter from "./components/counter/Counter";
 import Buttons from "./components/buttons/Buttons";
 import Finish from "./components/finish/Finish";
+import Flags from "./components/flags/Flags";
 
 import {
   setScore,
@@ -31,6 +32,7 @@ import {
   setIsButtonClicked,
   setLocalStorageData,
   setShowFade,
+  setImageIsLoading,
 } from "./features/utilities/utilitiesSlice";
 
 import {
@@ -116,11 +118,12 @@ function App() {
     region,
     ironMan,
     lessAnswers,
+    flags,
   } = useSelector((store: RootStore) => store.options);
 
   const { currentQuestion } = useSelector((store: RootStore) => store.score);
 
-  const { data, usedData, subject, object } = useSelector(
+  const { data, usedData, subject, object, question } = useSelector(
     (store: RootStore) => store.engine
   );
 
@@ -162,6 +165,8 @@ function App() {
 
   //What happens when you make mistake in Iron Man mode
   function finishIronMan(): void {
+    dispatch(clearUsedData());
+
     ironManToLocalStorage();
     dispatch(setMain(false));
     dispatch(setFinish(true));
@@ -274,6 +279,9 @@ function App() {
     let questionText: string = "";
 
     switch (true) {
+      case flip && flags:
+        questionText = interfaceText.QUESTION_FLAGS_TEXT_FLIP;
+        break;
       case flip && region:
         questionText = interfaceText.QUESTION_REGION_TEXT_FLIP;
         break;
@@ -282,6 +290,9 @@ function App() {
         break;
       case region:
         questionText = interfaceText.QUESTION_REGION_TEXT;
+        break;
+      case flags:
+        questionText = interfaceText.QUESTION_FLAGS_TEXT;
         break;
       default:
         questionText = interfaceText.QUESTION_TEXT;
@@ -372,6 +383,7 @@ function App() {
   }
 
   function backToStart(): void {
+    dispatch(setImageIsLoading(true));
     clearAllScores();
     clearAndRefresh();
     main && dispatch(setMain(false));
@@ -394,7 +406,7 @@ function App() {
       );
     }
     clearAllScores();
-    clearAndRefresh();
+    // clearAndRefresh();
     dispatch(setFinish(false));
     dispatch(setMain(true));
     quiz();
@@ -468,6 +480,9 @@ function App() {
     preloadImage();
   }, [usedData]);
 
+  console.log(usedData);
+  console.log(question.answers);
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -491,7 +506,10 @@ function App() {
           {main && (
             <Stack>
               <Question />
-              <Answers answerClicked={answerClicked} />
+              {!flags || (flags && flip) ? (
+                <Answers answerClicked={answerClicked} />
+              ) : null}
+              {flags && !flip ? <Flags answerClicked={answerClicked} /> : null}
               <Counter />
               <Buttons backToStart={backToStart} />
             </Stack>

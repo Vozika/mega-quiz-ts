@@ -1,13 +1,16 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { RootStore } from "../../store";
 import { Avatar } from "@mui/material";
 import Box from "@mui/material/Box";
 
 const Flag = () => {
-  const { usedData } = useSelector((store: RootStore) => store.engine);
+  const { question } = useSelector((store: RootStore) => store.engine);
 
-  const flag: string = "flag/" + usedData[usedData.length - 2].id + ".svg";
+  const trueObject = question.answers.find(
+    (element) => element.isCorrect === true
+  );
+  const id = trueObject ? trueObject.id : 0;
+  const flag: string = "flag/" + id + ".svg";
 
   return (
     <Box

@@ -46,6 +46,10 @@ export const interfaceEN: Language = {
   REGION_DESC: "Choose a region of a country instead of a capital.",
   IRON_MAN_FINISHED: "Iron Man games finished:",
   CLEAR_STATISTICS: "Clear statistics",
+  FLAGS: "Flag Game",
+  FLAGS_DESC: "Flag of the country instead of a capital.",
+  QUESTION_FLAGS_TEXT: "Choose the flag of this country:",
+  QUESTION_FLAGS_TEXT_FLIP: "Choose the country of this flag:",
 };
 
 export const interfaceRU: Language = {
@@ -91,4 +95,8 @@ export const interfaceRU: Language = {
   REGION_DESC: "Отгадайте регион страны вместо столицы.",
   IRON_MAN_FINISHED: "ЖЧ игр закончено:",
   CLEAR_STATISTICS: "Очистить",
+  FLAGS: "Флаги стран",
+  FLAGS_DESC: "Флаг страны вместо столицы.",
+  QUESTION_FLAGS_TEXT: "Выберите флаг этой страны:",
+  QUESTION_FLAGS_TEXT_FLIP: "Выберите страну для этого флага:",
 };

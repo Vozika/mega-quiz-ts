@@ -9,6 +9,7 @@ interface Utilities {
   localStorageData: LocalStorageData;
   statistics: boolean;
   showFade: boolean;
+  imageIsLoading: boolean;
 }
 
 const initialState: Utilities = {
@@ -24,6 +25,7 @@ const initialState: Utilities = {
   },
   statistics: false,
   showFade: true,
+  imageIsLoading: true,
 };
 
 const utilitiesSlice = createSlice({
@@ -53,6 +55,12 @@ const utilitiesSlice = createSlice({
     setShowFade: (state, action: PayloadAction<boolean>) => {
       state.showFade = action.payload;
     },
+    switchImageIsLoading: (state) => {
+      state.imageIsLoading = !state.imageIsLoading;
+    },
+    setImageIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.imageIsLoading = action.payload;
+    },
   },
 });
 
@@ -62,6 +70,8 @@ export const {
   setLocalStorageData,
   resetLocalStorageData,
   setShowFade,
+  switchImageIsLoading,
+  setImageIsLoading
 } = utilitiesSlice.actions;
 
 export default utilitiesSlice.reducer;
