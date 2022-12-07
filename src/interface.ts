@@ -13,7 +13,7 @@ export const interfaceEN: Language = {
   NUMBER_OF_QUESTIONS: "Number of questions",
   FLIP: "Flip the question",
   FLIP_DESC:
-    "Now you know the capital. But what about the country? Works for region too.",
+    "Now you know the capital. But what about the country? Works for region and flags too.",
   SHOW5050: "Show 50/50",
   BUTTON_5050: "50/50",
   SHOW5050_DESC: "Let us give you a little help. 2 answers instead of 4.",
@@ -62,7 +62,7 @@ export const interfaceRU: Language = {
   I_WANT_TO_KNOW: "Хочу узнать",
   NUMBER_OF_QUESTIONS: "Количество вопросов",
   FLIP: "Наоборот",
-  FLIP_DESC: "Столица известна, отгадайте страну. Работает с регионом тоже.",
+  FLIP_DESC: "Столица известна, отгадайте страну. Также работает с регионом и флагами.",
   SHOW5050: "Показать 50/50",
   BUTTON_5050: "50/50",
   SHOW5050_DESC: "Немного помощи не помешает. 2 ответа вместо 4-х.",

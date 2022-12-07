@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import { Stack } from "@mui/material";
 import Zoom from "@mui/material/Zoom";
 import CircularProgress from "@mui/material/CircularProgress";
+import Grid from "@mui/material/Grid";
 
 import { setQuestionColor } from "../../features/engine/engineSlice";
 import { switchImageIsLoading } from "../../features/utilities/utilitiesSlice";
@@ -95,83 +96,87 @@ const Flags = ({ answerClicked }: Props) => {
       <CircularProgress sx={{ ml: 1, mt: 1, mr: 1 }} />
     </Stack>
   ) : (
-    <Stack
-      sx={{
-        display: "flex",
-        flexDirection: {
-          xs: "column",
-          sm: "column",
-          xl: "row",
-        },
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      {question.answers.map((answer) => {
-        return (
-          <Button
-            variant="contained"
-            key={answer.id}
-            color={
-              isButtonClicked && answer.isCorrect
-                ? "success"
-                : isButtonClicked && !answer.isCorrect && answer.color
-                ? "error"
-                : "primary"
-            }
-            sx={{
-              p: 0,
-              m: "4px",
-              display: answer.toHide && lessAnswers ? "none" : "inline",
-              width: {
-                xs: "fit-content",
-                sm: "fit-content",
-                xl: "fit-content",
-              },
-              height: {
-                xs: "auto",
-                sm: "auto",
-                xl: "auto",
-              },
-            }}
-            onClick={() => {
-              dispatch(
-                setQuestionColor(
-                  question.answers.findIndex((x) => x === answer)
-                )
-              );
-              !isButtonClicked && answerClicked(answer.isCorrect);
-            }}
-          >
-            <Zoom in={true} timeout={450}>
-              <Box
-                component="img"
+    // <Stack
+    //   sx={{
+    //     display: "flex",
+    //     flexDirection: {
+    //       xs: "column",
+    //       sm: "column",
+    //       xl: "row",
+    //     },
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //   }}
+    // >
+      <Grid container columns={2} spacing={0}>
+        {question.answers.map((answer) => {
+          return (
+            <Grid item xl={1} sx={{}}>
+              <Button
+                variant="contained"
+                key={answer.id}
+                color={
+                  isButtonClicked && answer.isCorrect
+                    ? "success"
+                    : isButtonClicked && !answer.isCorrect && answer.color
+                    ? "error"
+                    : "primary"
+                }
                 sx={{
+                  p: 0,
+                  m: "4px",
+                  display: answer.toHide && lessAnswers ? "none" : "inline",
                   width: {
-                    xs: 260,
-                    sm: 260,
-                    xl: "auto",
+                    xs: "fit-content",
+                    sm: "fit-content",
+                    xl: "fit-content",
                   },
                   height: {
                     xs: "auto",
                     sm: "auto",
-                    xl: 170,
+                    xl: "auto",
                   },
-                  p: 0,
-                  mb: 0,
-                  mt: 1,
-                  ml: 1,
-                  mr: 1,
-                  border: "1px solid white",
                 }}
-                alt="Flag"
-                src={"flag/" + answer.id + ".svg"}
-              />
-            </Zoom>
-          </Button>
-        );
-      })}
-    </Stack>
+                onClick={() => {
+                  dispatch(
+                    setQuestionColor(
+                      question.answers.findIndex((x) => x === answer)
+                    )
+                  );
+                  !isButtonClicked && answerClicked(answer.isCorrect);
+                }}
+              >
+                <Zoom in={true} timeout={450}>
+                  <Box
+                    component="img"
+                    sx={{
+                      width: {
+                        xs: 250,
+                        sm: 250,
+                        xl: "auto",
+                      },
+                      height: {
+                        xs: "auto",
+                        sm: "auto",
+                        xl: 170,
+                      },
+                      p: 0,
+                      mb: 0,
+                      mt: 1,
+                      ml: 1,
+                      mr: 1,
+                      border: "1px solid white",
+                    }}
+                    alt="Flag"
+                    src={"flag/" + answer.id + ".svg"}
+                  />
+                </Zoom>
+              </Button>
+            </Grid>
+          );
+        })}
+      </Grid>
+    // </Stack>
   );
 };
 
