@@ -96,43 +96,63 @@ const Flags = ({ answerClicked }: Props) => {
       <CircularProgress sx={{ ml: 1, mt: 1, mr: 1 }} />
     </Stack>
   ) : (
-    // <Stack
-    //   sx={{
-    //     display: "flex",
-    //     flexDirection: {
-    //       xs: "column",
-    //       sm: "column",
-    //       xl: "row",
-    //     },
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    // >
-      <Grid container columns={2} spacing={0}>
+    <Stack
+      sx={{
+        display: "flex",
+        flexDirection: {
+          xs: "column",
+          sm: "column",
+          xl: "row",
+        },
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Grid
+        container
+        columns={{ xs: 2, xl: 4 }}
+        spacing={1}
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          maxWidth: {
+            xs: "auto",
+            sm: "fit-content",
+            xl: "fit-content",
+          },
+        }}
+      >
         {question.answers.map((answer) => {
           return (
-            <Grid item xl={1} sx={{}}>
+            <Grid item xs={1} xl={1} sm={2}>
               <Button
-                variant="contained"
+                // variant="contained"
                 key={answer.id}
-                color={
-                  isButtonClicked && answer.isCorrect
-                    ? "success"
-                    : isButtonClicked && !answer.isCorrect && answer.color
-                    ? "error"
-                    : "primary"
-                }
+                // color={
+                //   isButtonClicked && answer.isCorrect
+                //     ? "success"
+                //     : isButtonClicked && !answer.isCorrect && answer.color
+                //     ? "error"
+                //     : "primary"
+                // }
                 sx={{
                   p: 0,
-                  m: "4px",
+                  m: 0,
+                  border: `solid 5px ${
+                    isButtonClicked && answer.isCorrect
+                      ? "#2e7d32"
+                      : isButtonClicked && !answer.isCorrect && answer.color
+                      ? "#d32f2f"
+                      : "white"
+                  }`,
                   display: answer.toHide && lessAnswers ? "none" : "inline",
-                  width: {
-                    xs: "fit-content",
+                  minWidth: {
+                    xs: "100%",
                     sm: "fit-content",
                     xl: "fit-content",
                   },
                   height: {
-                    xs: "auto",
+                    xs: 100,
                     sm: "auto",
                     xl: "auto",
                   },
@@ -148,27 +168,32 @@ const Flags = ({ answerClicked }: Props) => {
               >
                 <Zoom in={true} timeout={450}>
                   <Box
-                    component="img"
+                    // component="img"
                     sx={{
                       width: {
-                        xs: 250,
+                        xs: "auto",
                         sm: 250,
-                        xl: "auto",
+                        xl: 300,
                       },
                       height: {
-                        xs: "auto",
-                        sm: "auto",
-                        xl: 170,
+                        xs: 70,
+                        sm: 150,
+                        xl: 150,
                       },
                       p: 0,
-                      mb: 0,
+                      mb: 1,
                       mt: 1,
                       ml: 1,
                       mr: 1,
-                      border: "1px solid white",
+                      // border: "1px solid white",
+                      background: `url(${
+                        "flag/" + answer.id + ".svg"
+                      }) no-repeat`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
                     }}
-                    alt="Flag"
-                    src={"flag/" + answer.id + ".svg"}
+                    // alt="Flag"
+                    // src={"flag/" + answer.id + ".svg"}
                   />
                 </Zoom>
               </Button>
@@ -176,7 +201,7 @@ const Flags = ({ answerClicked }: Props) => {
           );
         })}
       </Grid>
-    // </Stack>
+    </Stack>
   );
 };
 
