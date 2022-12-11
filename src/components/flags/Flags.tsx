@@ -126,15 +126,7 @@ const Flags = ({ answerClicked }: Props) => {
           return (
             <Grid item xs={1} xl={1} sm={2}>
               <Button
-                // variant="contained"
                 key={answer.id}
-                // color={
-                //   isButtonClicked && answer.isCorrect
-                //     ? "success"
-                //     : isButtonClicked && !answer.isCorrect && answer.color
-                //     ? "error"
-                //     : "primary"
-                // }
                 sx={{
                   p: 0,
                   m: 0,
@@ -168,7 +160,6 @@ const Flags = ({ answerClicked }: Props) => {
               >
                 <Zoom in={true} timeout={450}>
                   <Box
-                    // component="img"
                     sx={{
                       width: {
                         xs: "auto",
@@ -185,15 +176,12 @@ const Flags = ({ answerClicked }: Props) => {
                       mt: 1,
                       ml: 1,
                       mr: 1,
-                      // border: "1px solid white",
                       background: `url(${
                         "flag/" + answer.id + ".svg"
                       }) no-repeat`,
                       backgroundSize: "contain",
                       backgroundPosition: "center",
                     }}
-                    // alt="Flag"
-                    // src={"flag/" + answer.id + ".svg"}
                   />
                 </Zoom>
               </Button>
