@@ -138,9 +138,9 @@ const Flags = ({ answerClicked }: Props) => {
                       : "white"
                   }`,
                   display: answer.toHide && lessAnswers ? "none" : "inline",
-                  minWidth: {
+                  width: {
                     xs: "100%",
-                    sm: "fit-content",
+                    sm: "100%",
                     xl: "fit-content",
                   },
                   height: {
@@ -161,15 +161,15 @@ const Flags = ({ answerClicked }: Props) => {
                 <Zoom in={true} timeout={450}>
                   <Box
                     sx={{
-                      width: {
+                      minWidth: {
                         xs: "auto",
-                        sm: 250,
-                        xl: 300,
+                        sm: 320,
+                        xl: 320,
                       },
                       height: {
                         xs: 70,
-                        sm: 150,
-                        xl: 150,
+                        sm: 130,
+                        xl: 170,
                       },
                       p: 0,
                       mb: 1,
