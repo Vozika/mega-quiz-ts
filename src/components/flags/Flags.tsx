@@ -24,7 +24,7 @@ const Flags = ({ answerClicked }: Props) => {
   const { isButtonClicked } = useSelector(
     (store: RootStore) => store.utilities
   );
-  const { showFade, imageIsLoading } = useSelector(
+  const { imageIsLoading } = useSelector(
     (store: RootStore) => store.utilities
   );
 
