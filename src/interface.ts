@@ -50,6 +50,7 @@ export const interfaceEN: Language = {
   FLAGS_DESC: "Flag of the country instead of a capital.",
   QUESTION_FLAGS_TEXT: "Choose the flag of this country:",
   QUESTION_FLAGS_TEXT_FLIP: "Choose the country of this flag:",
+  SEARCH: "Search",
 };
 
 export const interfaceRU: Language = {
@@ -62,7 +63,8 @@ export const interfaceRU: Language = {
   I_WANT_TO_KNOW: "Хочу узнать",
   NUMBER_OF_QUESTIONS: "Количество вопросов",
   FLIP: "Наоборот",
-  FLIP_DESC: "Столица известна, отгадайте страну. Также работает с регионом и флагами.",
+  FLIP_DESC:
+    "Столица известна, отгадайте страну. Также работает с регионом и флагами.",
   SHOW5050: "Показать 50/50",
   BUTTON_5050: "50/50",
   SHOW5050_DESC: "Немного помощи не помешает. 2 ответа вместо 4-х.",
@@ -99,4 +101,5 @@ export const interfaceRU: Language = {
   FLAGS_DESC: "Флаг страны вместо столицы.",
   QUESTION_FLAGS_TEXT: "Выберите флаг этой страны:",
   QUESTION_FLAGS_TEXT_FLIP: "Выберите страну для этого флага:",
+  SEARCH: "Поиск",
 };

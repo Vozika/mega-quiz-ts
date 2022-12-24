@@ -16,6 +16,7 @@ import Counter from "./components/counter/Counter";
 import Buttons from "./components/buttons/Buttons";
 import Finish from "./components/finish/Finish";
 import Flags from "./components/flags/Flags";
+import Search from "./components/search/Search";
 
 import {
   setScore,
@@ -33,6 +34,7 @@ import {
   setLocalStorageData,
   setShowFade,
   setImageIsLoading,
+  setSearchWord,
 } from "./features/utilities/utilitiesSlice";
 
 import {
@@ -46,6 +48,7 @@ import {
   setMain,
   setFinish,
   setStart,
+  setSearch,
 } from "./features/structure/structureSlice";
 
 import {
@@ -100,7 +103,7 @@ const theme = createTheme({
 
 function App() {
   const dispatch = useAppDispatch();
-  const { start, main, finish } = useSelector(
+  const { start, main, finish, search } = useSelector(
     (store: RootStore) => store.structure
   );
 
@@ -386,6 +389,8 @@ function App() {
     dispatch(setImageIsLoading(true));
     clearAllScores();
     clearAndRefresh();
+    search && dispatch(setSearch(false));
+    dispatch(setSearchWord(""));
     main && dispatch(setMain(false));
     finish && dispatch(setFinish(false));
     dispatch(setStart(true));
@@ -503,6 +508,8 @@ function App() {
               preloadImage={preloadImage}
             />
           )}
+
+          {search && <Search backToStart={backToStart} />}
           {main && (
             <Stack>
               <Question />

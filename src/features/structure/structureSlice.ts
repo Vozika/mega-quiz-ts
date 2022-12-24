@@ -5,6 +5,7 @@ interface Structure {
   main: boolean;
   finish: boolean;
   modal: boolean;
+  search: boolean;
 }
 
 const initialState: Structure = {
@@ -12,6 +13,7 @@ const initialState: Structure = {
   main: false,
   finish: false,
   modal: false,
+  search: false,
 };
 
 const structureSlice = createSlice({
@@ -30,10 +32,13 @@ const structureSlice = createSlice({
     setModal: (state, action: PayloadAction<boolean>) => {
       state.modal = action.payload;
     },
+    setSearch: (state, action: PayloadAction<boolean>) => {
+      state.search = action.payload;
+    },
   },
 });
 
-export const { setStart, setMain, setFinish, setModal } =
+export const { setStart, setMain, setFinish, setModal, setSearch } =
   structureSlice.actions;
 
 export default structureSlice.reducer;

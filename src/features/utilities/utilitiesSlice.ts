@@ -10,6 +10,7 @@ interface Utilities {
   statistics: boolean;
   showFade: boolean;
   imageIsLoading: boolean;
+  searchWord: string;
 }
 
 const initialState: Utilities = {
@@ -26,6 +27,7 @@ const initialState: Utilities = {
   statistics: false,
   showFade: true,
   imageIsLoading: true,
+  searchWord: "",
 };
 
 const utilitiesSlice = createSlice({
@@ -61,6 +63,9 @@ const utilitiesSlice = createSlice({
     setImageIsLoading: (state, action: PayloadAction<boolean>) => {
       state.imageIsLoading = action.payload;
     },
+    setSearchWord: (state, action: PayloadAction<string>) => {
+      state.searchWord = action.payload;
+    },
   },
 });
 
@@ -71,7 +76,8 @@ export const {
   resetLocalStorageData,
   setShowFade,
   switchImageIsLoading,
-  setImageIsLoading
+  setImageIsLoading,
+  setSearchWord
 } = utilitiesSlice.actions;
 
 export default utilitiesSlice.reducer;

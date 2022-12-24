@@ -5,6 +5,7 @@ import {
   setStart,
   setMain,
   setModal,
+  setSearch
 } from "../../features/structure/structureSlice";
 
 import { switchRU, setOptions } from "../../features/options/optionsSlice";
@@ -136,6 +137,15 @@ const Start = ({ startQuiz, toLocalStorage, preloadImage }: Props) => {
           }}
         >
           {interfaceText.STATISTICS}
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            dispatch(setStart(false));
+            dispatch(setSearch(true));
+          }}
+        >
+          {interfaceText.SEARCH}
         </Button>
         <Button
           variant="outlined"
