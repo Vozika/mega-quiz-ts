@@ -77,7 +77,7 @@ export const {
   setShowFade,
   switchImageIsLoading,
   setImageIsLoading,
-  setSearchWord
+  setSearchWord,
 } = utilitiesSlice.actions;
 
 export default utilitiesSlice.reducer;
