@@ -937,7 +937,7 @@ const data: Item[] = [
     },
     capital: {
       translations: {
-        en: "Praha",
+        en: "Prague",
         ru: "Прага",
       },
     },

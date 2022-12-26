@@ -51,6 +51,7 @@ export const interfaceEN: Language = {
   QUESTION_FLAGS_TEXT: "Choose the flag of this country:",
   QUESTION_FLAGS_TEXT_FLIP: "Choose the country of this flag:",
   SEARCH: "Search",
+  SEARCH_DESC: "Type a country or a capital in English"
 };
 
 export const interfaceRU: Language = {
@@ -102,4 +103,5 @@ export const interfaceRU: Language = {
   QUESTION_FLAGS_TEXT: "Выберите флаг этой страны:",
   QUESTION_FLAGS_TEXT_FLIP: "Выберите страну для этого флага:",
   SEARCH: "Поиск",
+  SEARCH_DESC: "Напишите название или столицу страны на английском"
 };

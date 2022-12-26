@@ -19,7 +19,7 @@ const Search = ({ backToStart }: Props) => {
   const { data } = useSelector((store: RootStore) => store.engine);
   const { searchWord } = useSelector((store: RootStore) => store.utilities);
 
-  function filterItem(option: string) {
+  function filterItem(option: string): boolean {
     return option.toLowerCase().includes(searchWord.toLowerCase());
   }
 
@@ -45,7 +45,7 @@ const Search = ({ backToStart }: Props) => {
         }}
       >
         <Typography variant="h5" mb={2}>
-          Type a country or a capital in English
+          {interfaceText.SEARCH_DESC}
         </Typography>
         <TextField
           label={interfaceText.SEARCH}
@@ -63,9 +63,12 @@ const Search = ({ backToStart }: Props) => {
 
       {data
         .filter((item) => {
-          if (filterItem(item.name.translations.en)) {
+          const name = item.name.translations.en;
+          const capital = item.capital.translations.en;
+
+          if (filterItem(name)) {
             return item;
-          } else if (filterItem(item.capital.translations.en)) {
+          } else if (filterItem(capital)) {
             return item;
           }
         })
