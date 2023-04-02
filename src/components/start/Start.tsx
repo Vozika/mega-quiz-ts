@@ -5,7 +5,7 @@ import {
   setStart,
   setMain,
   setModal,
-  setSearch
+  setSearch,
 } from "../../features/structure/structureSlice";
 
 import { switchRU, setOptions } from "../../features/options/optionsSlice";
@@ -42,7 +42,7 @@ const Start = ({ startQuiz, toLocalStorage, preloadImage }: Props) => {
     (store: RootStore) => store.utilities
   );
 
-  preloadImage();
+  // preloadImage();
 
   return (
     <Stack>
